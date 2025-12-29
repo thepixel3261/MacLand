@@ -1,8 +1,10 @@
 # My Arch Hyprland Dotfiles
 
+
+(Demos made in CachyOS)
 ![Demo](demo.png)
 ![Demo-dark](demo-dark.png)
-To install on Arch:
+To install on Arch based distro:
 
 Install on a fresh Minimal Arch installation for best results
 
