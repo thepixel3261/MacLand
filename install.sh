@@ -127,7 +127,18 @@ suns_aur=(
     beekeeper-studio-bin
 )
 
-read -p "Install apps and packages used by sun (may contain bloat)? (y/n): " install_sun
+read -p "Install sddm theme? (y/N): " install_sddm
+if [[ "$install_sddm" == "y" || "$install_sddm" == "Y" || "$install_sddm" == "yes" || "$instal>
+	echo ">> Installing sddm theme..."
+	if pacman -Qi "sddm-theme-obscure-git" &>/dev/null; then
+		echo "[*] sddm theme is already installed"
+	else
+		echo "[+] Installing sddm-theme-obscure-git"
+		yay -S --noconfirm sddm-theme-obscure-git
+	fi
+fi
+
+read -p "Install apps and packages used by sun (may contain bloat)? (y/N): " install_sun
 
 if [[ "$install_sun" == "y" || "$install_sun" == "Y" || "$install_sun" == "yes" || "$install_sun" == "YES" ]]; then
 	echo ">> Installing pacman packages..."
