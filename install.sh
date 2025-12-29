@@ -128,7 +128,7 @@ suns_aur=(
 )
 
 read -p "Install sddm theme? (y/N): " install_sddm
-if [[ "$install_sddm" == "y" || "$install_sddm" == "Y" || "$install_sddm" == "yes" || "$instal>
+if [[ "$install_sddm" == "y" || "$install_sddm" == "Y" || "$install_sddm" == "yes" || "$instal_sddm" == "YES" ]]; then
 	echo ">> Installing sddm theme..."
 	if pacman -Qi "sddm-theme-obscure-git" &>/dev/null; then
 		echo "[*] sddm theme is already installed"
