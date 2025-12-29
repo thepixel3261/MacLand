@@ -24,7 +24,6 @@
 
     // Modules Left
     "modules-left": [
-	"custom/appmenuicon",
         "clock",
         "wlr/taskbar",
         "hyprland/window"
