@@ -135,6 +135,8 @@ if [[ "$install_sddm" == "y" || "$install_sddm" == "Y" || "$install_sddm" == "ye
 	else
 		echo "[+] Installing sddm-theme-obscure-git"
 		yay -S --noconfirm sddm-theme-obscure-git
+		echo "[*] Applying sddm theme"
+		sudo sh -c 'printf "[Theme]\nCurrent=obscure\n" > /etc/sddm.conf'
 	fi
 fi
 
@@ -241,6 +243,11 @@ cp -a ~/dotfiles/home/. ~/
 cp -a ~/dotfiles/dotconfig/. ~/.config/
 cd
 rm -rf dotfiles/
+
+# Keyboard select
+read -p "What is your keyboard code (us/de/fr/...)? : " keyboardlayout
+sudo -u $USER sh -c "echo -e 'input {\n        kb_layout = $keyboardlayout\n}' > ~/.config/hypr/conf/input.conf"
+
 
 # sddm
 sudo systemctl enable sddm
