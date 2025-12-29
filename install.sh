@@ -56,6 +56,7 @@ pacman_packages=(
 	rofi
 	fd
 	cava
+	nano
 )
 
 echo ">> Updating package database..."
