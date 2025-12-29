@@ -104,7 +104,7 @@ done
 # install packages used by sun
 suns_pacman=(
 	spotify-launcher
-	discord
+	vesktop
 	obs-studio
 	veracrypt
     go
