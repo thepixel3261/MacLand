@@ -1,5 +1,5 @@
 # My Arch Hyprland Dotfiles
-
+Not supposed to represent MacOs, just the glassy style!
 
 (Demos made in CachyOS)
 ![Demo](demo.png)
