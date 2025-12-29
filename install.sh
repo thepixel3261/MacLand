@@ -23,7 +23,6 @@ pacman_packages=(
 	hyprpaper
 	sddm
 	waybar
-	nwg-dock-hyprland
 	kitty
 	nvim
 	nautilus
@@ -45,7 +44,6 @@ pacman_packages=(
 	eza
 	swaync
 	hyprshot
-	nwg-drawer
 	fastfetch
 	locate
 	papirus-icon-theme
@@ -55,6 +53,7 @@ pacman_packages=(
 	noto-fonts-emoji
 	noto-fonts-cjk
 	gnome-text-editor
+	rofi
     fd
 )
 
