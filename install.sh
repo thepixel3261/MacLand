@@ -166,6 +166,7 @@ if [[ "$install_sun" == "y" || "$install_sun" == "Y" || "$install_sun" == "yes" 
 fi
 
 # nvidia
+echo "WARNING: Do not install NVIDIA drivers if you are on a distro like CachyOS that pre-installs their own drivers!"
 read -p "Install NVIDIA drivers? (y/n): " install_nvidia
 
 if [[ "$install_nvidia" == "y" || "$install_nvidia" == "Y" || "$install_nvidia" == "yes" || "$install_nvidia" == "YES" ]]; then
