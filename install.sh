@@ -109,10 +109,10 @@ suns_pacman=(
 	vesktop
 	obs-studio
 	veracrypt
-    go
-    rustup
-    jdk-openjdk
-    maven
+        go
+        rustup
+        jdk-openjdk
+        maven
 )
 
 suns_aur=(
@@ -125,22 +125,9 @@ suns_aur=(
 	libtiff5
 	ttf-wps-fonts
 	google-chrome
-    dotnet-sdk-bin
-    beekeeper-studio-bin
+	dotnet-sdk-bin
+	beekeeper-studio-bin
 )
-
-read -p "Install sddm theme? (y/N): " install_sddm
-if [[ "$install_sddm" == "y" || "$install_sddm" == "Y" || "$install_sddm" == "yes" || "$instal_sddm" == "YES" ]]; then
-	echo ">> Installing sddm theme..."
-	if pacman -Qi "sddm-theme-obscure-git" &>/dev/null; then
-		echo "[*] sddm theme is already installed"
-	else
-		echo "[+] Installing sddm-theme-obscure-git"
-		yay -S --noconfirm sddm-theme-obscure-git
-		echo "[*] Applying sddm theme"
-		sudo sh -c 'printf "[Theme]\nCurrent=obscure\n" > /etc/sddm.conf'
-	fi
-fi
 
 read -p "Install apps and packages used by sun (may contain bloat)? (y/N): " install_sun
 
@@ -163,6 +150,20 @@ if [[ "$install_sun" == "y" || "$install_sun" == "Y" || "$install_sun" == "yes" 
 	                yay -S --noconfirm "$pkg"
 	        fi
 	done
+fi
+
+# sddm theme
+read -p "Install sddm theme? (y/N): " install_sddm
+if [[ "$install_sddm" == "y" || "$install_sddm" == "Y" || "$install_sddm" == "yes" || "$instal_sddm" == "YES" ]]; then
+	echo ">> Installing sddm theme..."
+	if pacman -Qi "sddm-theme-obscure-git" &>/dev/null; then
+		echo "[*] sddm theme is already installed"
+	else
+		echo "[+] Installing sddm-theme-obscure-git"
+		yay -S --noconfirm sddm-theme-obscure-git
+		echo "[*] Applying sddm theme"
+		sudo sh -c 'printf "[Theme]\nCurrent=obscure\n" > /etc/sddm.conf'
+	fi
 fi
 
 # nvidia
