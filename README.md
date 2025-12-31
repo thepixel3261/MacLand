@@ -22,3 +22,21 @@ cd ~/dotfiles
 ```bash
 ./install.sh
 ```
+
+
+To update the dotfiles
+
+1.
+```bash
+git clone https://github.com/thepixel3261/MacLand.git ~/dotfiles
+```
+
+2.
+```bash
+cd ~/dotfiles
+```
+
+3.
+```bash
+./update.sh
+```
