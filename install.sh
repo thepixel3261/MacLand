@@ -246,7 +246,6 @@ mkdir ~/.config
 cp -a ~/dotfiles/home/. ~/
 cp -a ~/dotfiles/dotconfig/. ~/.config/
 cd
-rm -rf dotfiles/
 
 # Hyprland config version 3
 read -p "Do you see many errors in the top bar right now? (y/N) : " confv3
@@ -255,6 +254,8 @@ if [[ "$confv3" == "y" || "$confv3" == "Y" || "$confv3" == "yes" || "$confv3" ==
 	echo "[*] Using appropriate config files for Hyprland config version 3."
 	cp -a ~/dotfiles/confv3/* ~/.config/hypr/
 fi
+
+rm -rf ~/dotfiles/
 
 # Keyboard select
 read -p "What is your keyboard code (us/de/fr/...)? : " keyboardlayout
