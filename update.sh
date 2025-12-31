@@ -1,8 +1,6 @@
 #!/bin/bash
 
-# WARNING: This script will update your dotfiles, but will not overwrite ~/.config/hypr/conf/keybinds.conf.
-echo "This script will update your dotfiles, but will not overwrite ~/.config/hypr/conf/keybinds.conf."
-echo "You will be asked if you want to keep your custom keybinds configuration."
+echo "This script will update your dotfiles.."
 read -p "Type 'yes' to continue: " confirm
 
 if [[ "$confirm" != "yes" ]]; then
@@ -14,19 +12,29 @@ fi
 echo ">> Updating dotfiles..."
 mkdir -p ~/.config
 
-# Copy all files except `keybinds.conf` from ~/dotfiles/dotconfig to ~/.config/
-shopt -s extglob
-cp -a ~/dotfiles/home/. ~/
-cp -a ~/dotfiles/dotconfig/!(hypr/conf/keybinds.conf) ~/.config/
+# Save the current keybinds.conf if it exists
+if [[ -f ~/.config/hypr/conf/keybinds.conf ]]; then
+    echo ">> Saving current keybinds.conf to ~/keybinds.conf.bak"
+    cp ~/.config/hypr/conf/keybinds.conf ~/keybinds.conf.bak
+fi
+
+# Copy all files from ~/dotfiles, excluding keybinds.conf
+cp -a ~/dotfiles/home/* ~/
+cp -a ~/dotfiles/dotconfig/* ~/.config/
 
 # Ask if the user wants to overwrite keybinds.conf
 read -p "Do you want to overwrite ~/.config/hypr/conf/keybinds.conf? (y/N): " overwrite_keybinds
 
 if [[ "$overwrite_keybinds" == "y" || "$overwrite_keybinds" == "Y" || "$overwrite_keybinds" == "yes" || "$overwrite_keybinds" == "YES" ]]; then
     echo ">> Overwriting keybinds.conf..."
-    cp -a ~/dotfiles/confv3/keybinds.conf ~/.config/hypr/conf/keybinds.conf
 else
-    echo ">> Keeping custom keybinds.conf..."
+    echo ">> Restoring custom keybinds.conf..."
+    if [[ -f ~/keybinds.conf.bak ]]; then
+        cp ~/keybinds.conf.bak ~/.config/hypr/conf/keybinds.conf
+        rm ~/keybinds.conf.bak  # Remove backup after restoring
+    else
+        echo "No backup of keybinds.conf found."
+    fi
 fi
 
 # Hyprland config version 3 (for comparison)
@@ -57,9 +65,5 @@ rm -rf ~/dotfiles/
 # Ask for keyboard layout selection
 read -p "What is your keyboard code (us/de/fr/...)? : " keyboardlayout
 sudo -u $USER sh -c "echo -e 'input {\n        kb_layout = $keyboardlayout\n}' > ~/.config/hypr/conf/input.conf"
-
-# Self-delete (remove the script after execution)
-echo ">> Cleaning up... deleting the update script."
-rm -- "$0"
 
 echo "[!] Done"
