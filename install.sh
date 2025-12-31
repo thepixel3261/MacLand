@@ -124,7 +124,6 @@ suns_aur=(
 	ttf-ms-win10-auto
 	libtiff5
 	ttf-wps-fonts
-	google-chrome
 	dotnet-sdk-bin
 	beekeeper-studio-bin
 )
@@ -260,7 +259,6 @@ rm -rf ~/dotfiles/
 # Keyboard select
 read -p "What is your keyboard code (us/de/fr/...)? : " keyboardlayout
 sudo -u $USER sh -c "echo -e 'input {\n        kb_layout = $keyboardlayout\n}' > ~/.config/hypr/conf/input.conf"
-
 
 # sddm
 sudo systemctl enable sddm
