@@ -153,7 +153,7 @@ fi
 
 # sddm theme
 read -p "Install sddm theme? (y/N): " install_sddm
-if [[ "$install_sddm" == "y" || "$install_sddm" == "Y" || "$install_sddm" == "yes" || "$instal_sddm" == "YES" ]]; then
+if [[ "$install_sddm" == "y" || "$install_sddm" == "Y" || "$install_sddm" == "yes" || "$install_sddm" == "YES" ]]; then
 	echo ">> Installing sddm theme..."
 	if pacman -Qi "sddm-theme-obscure-git" &>/dev/null; then
 		echo "[*] sddm theme is already installed"
@@ -227,8 +227,8 @@ EOF
 
 	# Reload the systemd daemon and enable the newly created services
 	systemctl daemon-reload
-	systemctl enable hyprland-suspend
-	systemctl enable hyprland-resume
+	sudo systemctl enable hyprland-suspend
+	sudo systemctl enable hyprland-resume
 
 	sudo tee /etc/modprobe.d/blacklist-nouveau.conf >/dev/null << 'EOF'
 blacklist nouveau
@@ -247,11 +247,25 @@ cp -a ~/dotfiles/dotconfig/. ~/.config/
 cd
 
 # Hyprland config version 3
-read -p "Do you see many errors in the top bar right now? (y/N) : " confv3
+REQUIRED_VERSION="0.53.0"
 
-if [[ "$confv3" == "y" || "$confv3" == "Y" || "$confv3" == "yes" || "$confv3" == "YES" ]]; then
-	echo "[*] Using appropriate config files for Hyprland config version 3."
-	cp -a ~/dotfiles/confv3/* ~/.config/hypr/
+# Get the first line of hyprland -v
+FIRST_LINE=$(hyprland -v 2>/dev/null | head -n 1)
+
+# Extract version number (e.g. 0.52.2, 1.2.3)
+VERSION=$(echo "$FIRST_LINE" | grep -oE '[0-9]+(\.[0-9]+)+')
+
+if [[ -z "$VERSION" ]]; then
+    echo "Failed to detect Hyprland version."
+    exit 1
+fi
+
+# Compare versions using sort -V
+if [[ "$(printf '%s\n%s\n' "$REQUIRED_VERSION" "$VERSION" | sort -V | head -n1)" == "$REQUIRED_VERSION" ]]; then
+    echo "Hyprland version $VERSION, using new config"
+    cp -a ~/dotfiles/confv3/* ~/.config/hypr/
+else
+    echo "Hyprland version $VERSION, using old config"
 fi
 
 rm -rf ~/dotfiles/
