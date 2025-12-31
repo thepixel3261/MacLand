@@ -55,7 +55,6 @@ Back up your dotfiles before proceeding.
 ```bash
 git clone https://github.com/thepixel3261/MacLand.git ~/dotfiles
 cd ~/dotfiles
-chmod +x install.sh
 ./install.sh
 ```
 
@@ -74,12 +73,11 @@ A reboot is recommended after installation.
 
 To update and re-apply the dotfiles:
 
-```bash
-cd ~/dotfiles
-chmod +x update.sh
-./update.sh
+```bash 
+git clone https://github.com/thepixel3261/MacLand.git ~/dotfiles 
+cd ~/dotfiles 
+./update.sh 
 ```
-
 ---
 
 ## 📦 Packages Installed
