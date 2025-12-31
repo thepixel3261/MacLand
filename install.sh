@@ -124,7 +124,6 @@ suns_aur=(
 	ttf-ms-win10-auto
 	libtiff5
 	ttf-wps-fonts
-	google-chrome
 	dotnet-sdk-bin
 	beekeeper-studio-bin
 )
@@ -246,7 +245,6 @@ mkdir ~/.config
 cp -a ~/dotfiles/home/. ~/
 cp -a ~/dotfiles/dotconfig/. ~/.config/
 cd
-rm -rf dotfiles/
 
 # Hyprland config version 3
 read -p "Do you see many errors in the top bar right now? (y/N) : " confv3
@@ -256,10 +254,11 @@ if [[ "$confv3" == "y" || "$confv3" == "Y" || "$confv3" == "yes" || "$confv3" ==
 	cp -a ~/dotfiles/confv3/* ~/.config/hypr/
 fi
 
+rm -rf ~/dotfiles/
+
 # Keyboard select
 read -p "What is your keyboard code (us/de/fr/...)? : " keyboardlayout
 sudo -u $USER sh -c "echo -e 'input {\n        kb_layout = $keyboardlayout\n}' > ~/.config/hypr/conf/input.conf"
-
 
 # sddm
 sudo systemctl enable sddm
