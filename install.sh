@@ -248,6 +248,14 @@ cp -a ~/dotfiles/dotconfig/. ~/.config/
 cd
 rm -rf dotfiles/
 
+# Hyprland config version 3
+read -p "Do you see many errors in the top bar right now? (y/N) : " confv3
+
+if [[ "$confv3" == "y" || "$confv3" == "Y" || "$confv3" == "yes" || "$confv3" == "YES" ]]; then
+	echo "[*] Using appropriate config files for Hyprland config version 3."
+	cp -a ~/dotfiles/confv3/* ~/.config/hypr/
+fi
+
 # Keyboard select
 read -p "What is your keyboard code (us/de/fr/...)? : " keyboardlayout
 sudo -u $USER sh -c "echo -e 'input {\n        kb_layout = $keyboardlayout\n}' > ~/.config/hypr/conf/input.conf"
