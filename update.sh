@@ -21,24 +21,6 @@ fi
 cp -a ~/dotfiles/home/* ~/
 cp -a ~/dotfiles/dotconfig/* ~/.config/
 
-mkdir -p /usr/share/
-sudo cp -a ~/dotfiles/usrshare/. /usr/share/
-
-# Ask if the user wants to overwrite keybinds.conf
-read -p "Do you want to overwrite ~/.config/hypr/conf/keybinds.conf? (y/N): " overwrite_keybinds
-
-if [[ "$overwrite_keybinds" == "y" || "$overwrite_keybinds" == "Y" || "$overwrite_keybinds" == "yes" || "$overwrite_keybinds" == "YES" ]]; then
-    echo ">> Overwriting keybinds.conf..."
-else
-    echo ">> Restoring custom keybinds.conf..."
-    if [[ -f ~/keybinds.conf.bak ]]; then
-        cp ~/keybinds.conf.bak ~/.config/hypr/conf/keybinds.conf
-        rm ~/keybinds.conf.bak  # Remove backup after restoring
-    else
-        echo "No backup of keybinds.conf found."
-    fi
-fi
-
 # Hyprland config version 3 (for comparison)
 REQUIRED_VERSION="0.53.0"
 
@@ -59,6 +41,25 @@ if [[ "$(printf '%s\n%s\n' "$REQUIRED_VERSION" "$VERSION" | sort -V | head -n1)"
     cp -a ~/dotfiles/confv3/* ~/.config/hypr/
 else
     echo "Hyprland version $VERSION, using old config"
+fi
+
+# /usr/share
+mkdir -p /usr/share/
+sudo cp -a ~/dotfiles/usrshare/. /usr/share/
+
+# Ask if the user wants to overwrite keybinds.conf
+read -p "Do you want to overwrite ~/.config/hypr/conf/keybinds.conf? (y/N): " overwrite_keybinds
+
+if [[ "$overwrite_keybinds" == "y" || "$overwrite_keybinds" == "Y" || "$overwrite_keybinds" == "yes" || "$overwrite_keybinds" == "YES" ]]; then
+    echo ">> Overwriting keybinds.conf..."
+else
+    echo ">> Restoring custom keybinds.conf..."
+    if [[ -f ~/keybinds.conf.bak ]]; then
+        cp ~/keybinds.conf.bak ~/.config/hypr/conf/keybinds.conf
+        rm ~/keybinds.conf.bak  # Remove backup after restoring
+    else
+        echo "No backup of keybinds.conf found."
+    fi
 fi
 
 # Clean up dotfiles
