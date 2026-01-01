@@ -18,9 +18,11 @@ if [[ -f ~/.config/hypr/conf/keybinds.conf ]]; then
     cp ~/.config/hypr/conf/keybinds.conf ~/keybinds.conf.bak
 fi
 
-# Copy all files from ~/dotfiles, excluding keybinds.conf
 cp -a ~/dotfiles/home/* ~/
 cp -a ~/dotfiles/dotconfig/* ~/.config/
+
+mkdir -p /usr/share/
+sudo cp -a ~/dotfiles/usrshare/. /usr/share/
 
 # Ask if the user wants to overwrite keybinds.conf
 read -p "Do you want to overwrite ~/.config/hypr/conf/keybinds.conf? (y/N): " overwrite_keybinds
