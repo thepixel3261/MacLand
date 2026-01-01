@@ -244,6 +244,11 @@ fi
 mkdir ~/.config
 cp -a ~/dotfiles/home/. ~/
 cp -a ~/dotfiles/dotconfig/. ~/.config/
+
+# Currently only for sddm theme changes
+mkdir -p /usr/share/sddm/themes/obscure
+sudo cp -a ~/dotfiles/usrshare/. /usr/share/
+
 cd
 
 # Hyprland config version 3
