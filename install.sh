@@ -57,6 +57,7 @@ pacman_packages=(
 	fd
 	cava
 	nano
+	brightnessctl
 )
 
 echo ">> Updating package database..."
