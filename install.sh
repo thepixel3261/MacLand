@@ -59,6 +59,7 @@ pacman_packages=(
 	nano
 	brightnessctl
 	btop
+	flameshot
 )
 
 echo ">> Updating package database..."
