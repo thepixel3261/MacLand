@@ -58,6 +58,7 @@ pacman_packages=(
 	cava
 	nano
 	brightnessctl
+	btop
 )
 
 echo ">> Updating package database..."
@@ -91,6 +92,7 @@ aur_packages=(
 	zen-browser-bin
 	oh-my-posh
 	nerd-fonts-complete-mono-glyphs
+	cmatrix-git
 )
 
 yay -Syu --noconfirm
