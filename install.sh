@@ -57,6 +57,9 @@ pacman_packages=(
 	fd
 	cava
 	nano
+	brightnessctl
+	btop
+	flameshot
 )
 
 echo ">> Updating package database..."
@@ -90,6 +93,7 @@ aur_packages=(
 	zen-browser-bin
 	oh-my-posh
 	nerd-fonts-complete-mono-glyphs
+	cmatrix-git
 )
 
 yay -Syu --noconfirm
@@ -244,6 +248,11 @@ fi
 mkdir ~/.config
 cp -a ~/dotfiles/home/. ~/
 cp -a ~/dotfiles/dotconfig/. ~/.config/
+
+# Currently only for sddm theme changes
+mkdir -p /usr/share/sddm/themes/obscure
+sudo cp -a ~/dotfiles/usrshare/. /usr/share/
+
 cd
 
 # Hyprland config version 3
