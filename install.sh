@@ -57,6 +57,7 @@ pacman_packages=(
 	nano
 	brightnessctl
 	btop
+	flameshot
 	swww
 )
 
