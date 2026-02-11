@@ -20,7 +20,6 @@ pacman_packages=(
 	hyprland
 	hyprlock
 	hypridle
-	hyprpaper
 	sddm
 	waybar
 	kitty
@@ -43,7 +42,6 @@ pacman_packages=(
 	polkit-gnome
 	eza
 	swaync
-	hyprshot
 	fastfetch
 	locate
 	papirus-icon-theme
@@ -59,6 +57,8 @@ pacman_packages=(
 	nano
 	brightnessctl
 	btop
+	flameshot
+	swww
 )
 
 echo ">> Updating package database..."
