@@ -164,7 +164,7 @@ if [[ "$install_sddm" == "y" || "$install_sddm" == "Y" || "$install_sddm" == "ye
 		echo "[+] Installing sddm-theme-obscure-git"
 		yay -S --noconfirm sddm-theme-obscure-git
 		echo "[*] Applying sddm theme"
-		sudo sh -c 'printf "[Theme]\nCurrent=obscure\n" > /etc/sddm.conf'
+		sudo sh -c 'printf "[Theme]\nCurrent=obscure\n\n[General]\nNumlock=on\n" > /etc/sddm.conf'
 	fi
 fi
 
