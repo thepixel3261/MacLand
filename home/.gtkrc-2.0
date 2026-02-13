@@ -2,7 +2,8 @@
 # Any customization should be done in ~/.gtkrc-2.0.mine instead.
 
 include "/home/rice/.gtkrc-2.0.mine"
-gtk-theme-name="Adwaita"
+gtk-theme-name="Adwaita-dark"
+gtk-application-prefer-dark-theme=1
 gtk-icon-theme-name="Papirus-Dark"
 gtk-font-name=""
 gtk-cursor-theme-name="default"

@@ -1,4 +1,4 @@
-# MacLand — Hyprland Dotfiles (Arch Linux)
+# Sharddots — Hyprland Dotfiles (Arch Linux)
 
 A **glassy-style Hyprland setup** for Arch-based systems.  
 Inspired by macOS aesthetics, but **not intended to replicate macOS**.
@@ -53,7 +53,7 @@ This script will **overwrite existing configs** in `~/.config` and `$HOME`.
 Back up your dotfiles before proceeding.
 
 ```bash
-git clone https://github.com/thepixel3261/MacLand.git ~/dotfiles
+git clone https://github.com/thepixel3261/Sharddots.git ~/dotfiles
 cd ~/dotfiles
 ./install.sh
 ```
@@ -74,7 +74,7 @@ A reboot is recommended after installation.
 To update and re-apply the dotfiles:
 
 ```bash 
-git clone https://github.com/thepixel3261/MacLand.git ~/dotfiles 
+git clone https://github.com/thepixel3261/Sharddots.git ~/dotfiles 
 cd ~/dotfiles 
 ./update.sh 
 ```
