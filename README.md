@@ -15,6 +15,7 @@ Inspired by macOS aesthetics, but **not intended to replicate macOS**.
 ### Dark Mode
 ![Dark](demo-dark.png)
 
+### See all wallpapers ![here](./home/wallpapers/)
 ---
 
 ## 🧩 Setup Overview
